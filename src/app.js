@@ -5,9 +5,12 @@ const path = require('path')
 const fileUpload = require('express-fileupload');
 const short = require('short-uuid');
 
+const publicDirectoryPath = path.join(__dirname, '../public')
 const fileStoragePath = path.join(__dirname, '/fileStorage')
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000;
+
+app.use(express.static(publicDirectoryPath))
 app.use(cors())
 app.use(fileUpload());
 
